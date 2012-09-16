@@ -2,17 +2,29 @@ var http = require("http");
 var url = require("url");
 ﻿var fs = require('fs');
 var nowjs = require("now");
+const crypto = require('crypto');
+
+var runningDirectory = "/home/andreas/PGP-Chat/PGP-Chat-Server/";
+var privateKey = fs.readFileSync(runningDirectory+'sslKeys/privatekey.pem').toString();
+var certificate = fs.readFileSync(runningDirectory+'sslKeys/certificate.pem').toString();
+
+var credentials = crypto.createCredentials({key: privateKey, cert: certificate});
+
+
 
 var INDEX_FILE = ""
 
 function start(route){
-var server = http.createServer(function(req, response){
-  fs.readFile('./chat/index.html', function(err, data){
-    response.writeHead(200, {'Content-Type':'text/html'}); 
-    response.write(data);  
-    response.end();
-  });
-});
+
+	var handler = function(req, response){
+		  fs.readFile('./chat/index.html', function(err, data){
+			    response.writeHead(200, {'Content-Type':'text/html'}); 
+			    response.write(data);  
+			    response.end();
+			  });
+			};
+	
+var server = http.createServer(credentials, handler);
 server.listen(8080);
 
 
