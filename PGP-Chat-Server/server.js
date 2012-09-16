@@ -1,6 +1,6 @@
-var http = require("http");
+var https = require("https");
 var url = require("url");
-﻿var fs = require('fs');
+var fs = require('fs');
 var nowjs = require("now");
 const crypto = require('crypto');
 
@@ -16,16 +16,20 @@ var INDEX_FILE = ""
 
 function start(route){
 
-	var handler = function(req, response){
-		  fs.readFile('./chat/index.html', function(err, data){
-			    response.writeHead(200, {'Content-Type':'text/html'}); 
-			    response.write(data);  
-			    response.end();
-			  });
-			};
-	
-var server = http.createServer(credentials, handler);
-server.listen(8080);
+	var runningDirectory = "/home/andreas/PGP-Chat/PGP-Chat-Server/";
+
+	var options = {
+	  key: fs.readFileSync(runningDirectory+'sslKeys/privatekey.pem'),
+	  cert: fs.readFileSync(runningDirectory+'sslKeys/certificate.pem')
+	};
+
+	var server = https.createServer(options, function (req, response) {
+		fs.readFile('./chat/index.html', function(err, data){
+		    response.writeHead(200, {'Content-Type':'text/html'}); 
+		    response.write(data);  
+		    response.end();
+		  });
+	}).listen(8080);
 
 
 
