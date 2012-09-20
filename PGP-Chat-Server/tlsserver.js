@@ -1,4 +1,4 @@
-var tls = require('tls');
+var tls = require('https');
 var fs = require('fs');
 
 var runningDirectory = "/home/andreas/PGP-Chat/PGP-Chat-Server/";
@@ -8,13 +8,8 @@ var options = {
   cert: fs.readFileSync(runningDirectory+'sslKeys/certificate.pem')
 };
 
-tls.createServer(options, function (s) {
-if (s.authorized) {
-    console.log("Connection authorized by a Certificate Authority.");
-  } else {
-    console.log("Connection not authorized: " + s.authorizationError)
-  }
-    console.log();
-  s.write("welcome!\n\n");
-  s.pipe(s);
+tls.createServer(options, function (req, res) {
+
+res.writeHead(200);
+  res.end("welcome!\n");
 }).listen(8000);
