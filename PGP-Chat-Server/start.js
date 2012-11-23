@@ -4,7 +4,7 @@ var requestHandlers = require("./requestHandlers");
 
 var handle = {}
 handle["/"] = requestHandlers.start;
-handle["/start"] = requestHandlers.start;
-handle["/js"] = requestHandlers.javascriptFile;
+handle["/js/"] = requestHandlers.javascriptFile;
+handle["/register/"] = requestHandlers.registerUser;
 
 server.start(router.route, handle);

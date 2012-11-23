@@ -1,7 +1,9 @@
 var https = require("http");
 var url = require("url");
 var fs = require('fs');
-var nowjs = require("now");
+
+var now = require('./nowchat.js');
+
 const crypto = require('crypto');
 
 var runningDirectory = "/home/andreas/PGP-Chat/PGP-Chat-Server/";
@@ -12,7 +14,7 @@ var credentials = crypto.createCredentials({key: privateKey, cert: certificate})
 
 
 
-var INDEX_FILE = ""
+var INDEX_FILE = "";
 
 function start(route, handle){
 
@@ -33,23 +35,7 @@ function start(route, handle){
 	//var server = https.createServer(options, onRequest).listen(8080);
 	var server = https.createServer(onRequest).listen(8080);
 
-
-
-var everyone = nowjs.initialize(server);
-
-
-everyone.connected(function(){
-	  console.log("Joined: " + this.now.name);
-	});
-
-
-	everyone.disconnected(function(){
-	  console.log("Left: " + this.now.name);
-	});
-
-everyone.now.distributeMessage = function(message){
-	everyone.now.receiveMessage(this.now.name, message);
-};
+	now.start(server);
 }
 
 /*
