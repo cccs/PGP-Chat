@@ -112,8 +112,6 @@ function aesEncrypt(password, rawData){
 
 }
 
-function
-
 function addMessage(message){
 	$("#messages").append(message);
 }        
@@ -240,8 +238,8 @@ function error(msg){//Hilfsfunktion um kritische Fehler anzuzeigen
 	<div id="chat-login" hidden="true" data-role="content">
 	<div id="messages"><br>...</div>
 	
-	<input type="text" name="name" id="username" value=""/>
-	<input type="text" name="name" id="password" value=""/>
+	Benutzername: <input type="text" name="name" id="username" value=""/>
+	Passwort: <input type="text" name="name" id="password" value=""/>
 	<input type="button" value="Einloggen" id="login-button">
 	</div><!-- /login -->
 

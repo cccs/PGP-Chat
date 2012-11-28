@@ -1,4 +1,4 @@
-var https = require("http");
+var https = require("https");
 var url = require("url");
 var fs = require('fs');
 
@@ -32,8 +32,8 @@ function start(route, handle){
     		route(handle, request, response);
 	}
 
-	//var server = https.createServer(options, onRequest).listen(8080);
-	var server = https.createServer(onRequest).listen(8080);
+	var server = https.createServer(options, onRequest).listen(8080);
+	//var server = https.createServer(onRequest).listen(8080); //without ssl for debug
 
 	now.start(server);
 }

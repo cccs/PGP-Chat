@@ -1,4 +1,5 @@
 var database = require('./database.js');
+var passwordHash = require('password-hash');
 
 function sendMessage(author, receiver, message, callback){
 	if(callback == undefined) callback = function(ret){console.log("Return from sendMessage: "+ret)};
@@ -12,15 +13,31 @@ function getMessages(forUser, callback){
 
 function registerUser(username, pubKey, privKey, password, callback){
 	//hier muss mithile von database.js der User registriert werden. Davor eingegebene Werte prüfen!
+	password = passwordHash.generate(password); // Passwort wird als Hash abgespeichert
 	database.addUser(username, pubKey, privKey, password, callback);
 }
 
 function getUserPrivateKey(name, password, callback){
-	database.getUserPW(name, function(ret){
-		if(password != null && password == ret){
+	verifyUserPW(name, password, function(ret){
+		if(ret == true){
 			database.getUserPrivateKey(name, callback);
 		}else{
 			return null;
+		}
+	});
+}
+
+/**
+Interne/privat Funktion
+Wird ein gültiger username und passwort übergeben wird callback mit true,
+ansonsten mit false aufgerufen.
+*/
+function verifyUserPW(username, userpw, callback){
+	database.getUserPW(username, function(ret){
+		if(ret != null){
+			callback(passwordHash.verify(userpw, ret));
+		}else{
+			callback(false);
 		}
 	});
 }

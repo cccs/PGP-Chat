@@ -35,6 +35,8 @@
 	<script src="./js/RSAKeyFormat.js"></script>
 	<script src="./js/BitPadding.js"></script>
     
+   <script src="./js/sjcl.js" ></script>
+    
     <script>
 	    __unit( "RSA.sample1.html" );
 	    __uses( "BigInteger.init1.js" );
@@ -165,6 +167,9 @@ var KEY_LENGTH = 512;
 		}
 		var done = function( succeeded, count, time ,startTime, finishTime ) {
 		    document.getElementById("content").firstChild.data = "Ready!";
+		    $('input[name=publicKey]').val(base64x_encode( rsaKey.publicKeyBytes() ));
+		    $('input[name=privateKey]').val(base64x_encode( rsaKey.privateKeyBytes() ));
+		    $('input[type="submit"]').removeAttr('disabled');
 		   //"<a target='_top' href='RSA.sample2.html?"
 			//+"pr="+base64x_encode( rsaKey.privateKeyBytes() ) + "&"
 			//+"pu="+base64x_encode( rsaKey.publicKeyBytes() ) + "&"
@@ -195,6 +200,16 @@ var KEY_LENGTH = 512;
 	    function tst(){
 		i++;
 	    }
+
+		function registerUser(){
+			
+			$('input[name=username]').val($('input[name=name]').val());
+			$('input[name=key_password]').val($('input[name=password]').val());
+			//key verschlüsseln:
+			$('input[name=privateKey]').val(sjcl.encrypt($('input[name=key_password]').val(), $('input[name=privateKey]').val()));
+			$('#registerSubmit').submit();
+		}	    
+	    
 	</script>
     
     </head> 
@@ -203,11 +218,16 @@ var KEY_LENGTH = 512;
 
 <div data-role="content" id="content">	
 </div>
-	<form action="./register/neu.php" method="post">
-		<input type="hidden" name="pubKey"></input>
-		<input type="hidden" name="pubKey"></input>
-		<input type="hidden" name="pubKey"></input>
+	<form id="registerSubmit" action="./register/neu.php" method="post">
+		<input type="hidden" name="publicKey"></input>
+		<input type="hidden" name="privateKey"></input>
+		<input type="hidden" name="username"></input>
+		<input type="hidden" name="key_password"></input>
 	</form>
-
+	<form id="userInput" onsubmit="registerUser();return false;">
+		<p>Benutzername: </p><input type="text" name="name"></input>
+		<p>Passwort: </p><input type="text" name="password"></input>
+		<input type="submit" value="Registrieren" disabled="disabled"></input>
+	</form>
 </body>
 </html>
