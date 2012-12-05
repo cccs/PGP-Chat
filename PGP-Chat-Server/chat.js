@@ -1,9 +1,15 @@
 var database = require('./database.js');
 var passwordHash = require('password-hash');
 
-function sendMessage(author, receiver, message, callback){
+function sendMessage(author, authorSessionId, receiver, message, callback){
 	if(callback == undefined) callback = function(ret){console.log("Return from sendMessage: "+ret)};
-	database.addMessage(author, receiver, message, callback);
+	database.getUsernameFromEnabledSession(authorSessionId, function(ret){
+		if(ret != false){
+			database.addMessage(author, receiver, message, callback);
+		}else{
+			callback(false);
+		}
+	});
 }
 
 function getMessages(forUser, callback){
@@ -85,6 +91,9 @@ function checkUserLogin(username, session, callback){
 	});
 }
 
+/*
+Liefert den Usernamen, welcher der übergebenen Session/ClientId zugeordnet ist.
+*/
 function getUserName(session, callback){
 	database.getUsernameFromEnabledSession(session, callback);
 }

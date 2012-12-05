@@ -7,7 +7,7 @@ var chat = require("./chat.js");
 var constants = require("./constants.js");
 
 function start(request, response) {
-fs.getHTMLFile(fs.getFilenameFrom(url.parse(request.url).pathname),function(data){
+fs.getHTMLFile(url.parse(request.url).pathname,function(data){
 		if(data!=""){    
 			response.writeHead(200, {'Content-Type':'text/html'}); 
 		    response.write(data);  
@@ -21,7 +21,7 @@ fs.getHTMLFile(fs.getFilenameFrom(url.parse(request.url).pathname),function(data
 }
 
 function javascriptFile(request, response){
-fs.getJavascriptFile(fs.getFilenameFrom(url.parse(request.url).pathname),function(data){
+fs.getJavascriptFile(url.parse(request.url).pathname,function(data){
 		if(data!=""){    
 			response.writeHead(200, {'Content-Type':'text/javascript'}); 
 		    response.write(data);  

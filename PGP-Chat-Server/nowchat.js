@@ -27,11 +27,14 @@ everyone.connected(function(){
 //};
 
 everyone.now.sendMessage = function(receiver, message){
+	var clientID = this.user.clientId;
 	chat.getUserName(this.user.clientId, function(username){
-		chat.sendMessage(username, receiver, message,function(ret){
+		chat.sendMessage(username, clientID, receiver, message,function(ret){
 			if(ret == 1){
 			console.log("User "+username+" sendet Nachricht an "+receiver);
 			sendMessageToUser(receiver, username, message);
+			}else{
+				console.log("User "+username+" konnte Nachricht nicht an "+receiver+" senden");
 			}
 		});
 	});

@@ -1,4 +1,5 @@
 var fs=require('fs');
+var path = require('path');
 
 var runningDirectory = "/home/andreas/PGP-Chat/PGP-Chat-Server/";
 var javascriptDirectory = runningDirectory+"chat/js/";
@@ -6,12 +7,12 @@ var htmlDirectory = runningDirectory+"chat/html/";
 
 
 function getHTMLFile(name, callback){
-var fileName=htmlDirectory+name;
+var fileName=htmlDirectory+getFilenameFrom(name);
 callback(getFileContent(fileName));
 }
 
 function getJavascriptFile(name, callback){
-var fileName=javascriptDirectory+name;
+var fileName=javascriptDirectory+path.normalize(name).replace(/^js\//,'').replace(/^\/js\//,'');
 callback(getFileContent(fileName));
 }
 
