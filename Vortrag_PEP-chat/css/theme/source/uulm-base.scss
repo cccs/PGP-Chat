@@ -1,0 +1,181 @@
+// Background generator
+@mixin bodyBackground() {
+	@include radial-gradient( #bebebe, #f0f0f0 );
+}
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+
+// Rounded corners for slide
+@mixin rounded-corners {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+
+
+.reveal {
+  // Generic styling
+
+  letter-spacing: -1px;
+  line-height: 36px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+
+  .slides section {
+    height: 675px;
+    width: 900px;
+  }
+
+  section img {
+    border: 0;
+    box-shadow: none;
+  }
+
+  .frame {
+    border: 2px solid #666666;
+    box-shadow: 0 0 10px rgba(0,0,0, 0.2);
+  }
+
+  .float-right {
+    float: right;
+  }
+
+  .float-left {
+    float: left;
+  }
+
+  h1 {
+    font-size: 60px;
+    line-height: 60px;
+    padding: 0;
+    margin: 0;
+    margin-top: 200px;
+    padding-right: 40px;
+    font-weight: 600;
+    letter-spacing: -3px;
+  }
+
+  h2 {
+    font-size: 45px;
+    line-height: 45px;
+    padding: 0;
+    margin: 0;
+    padding-right: 40px;
+    padding-bottom: 30px;
+    font-weight: 600;
+    letter-spacing: -2px;
+  }
+
+  h3 {
+    font-size: 30px;
+    line-height: 36px;
+    padding: 0;
+    margin: 0;
+    padding-right: 40px;
+    padding-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: -1px;
+  }
+
+  p {
+    margin: 0 0 20px 0;
+  }
+
+  li {
+    padding: 0;
+    margin: 0 0 0.4em;
+  }
+
+  ul li {
+    list-style: none outside none;
+
+    &:before {
+      color: $highlightColor;
+      content: "·";
+      margin-left: -0.75em;
+      width: 0.75em;
+      margin-right: 0.5em;
+    }
+  }
+
+
+  .slides {
+    text-align: left;
+
+    // White page background for current slide
+    section:not(.stack).present {
+      @include rounded-corners;
+      border: 1px solid rgba(0,0,0,0.3);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+
+
+    // Page style: normal
+    div.normal {
+      padding: 20px 60px 32px;
+    }
+
+
+    // Page style: title
+    div.title {
+      padding: 20px 60px;
+
+      > img.header {
+        position: absolute;
+        left: 0;
+        top: 20%;
+        height: 50%;
+        width: 100%;
+        min-height: 50%;
+        min-width: 100%;
+        margin: 0;
+        z-index: -1;
+      }
+
+      .belowheader {
+        position: absolute;
+        top: 70%;
+        padding-top: 1ex;
+      }
+
+      .belowheader h1 {
+        margin: 0;
+      }
+    }
+
+
+    // Page style: fill
+    div.fill {
+      padding: 20px 60px 32px;
+
+      h2 {
+        background: rgba(255, 255, 255, .75);
+        padding-top: .2em;
+        padding-bottom: .3em;
+        margin-top: .3em;
+        margin-bottom: .3em;
+        margin-left: -60px;
+        padding-left: 60px;
+        margin-right: -60px;
+        padding-right: 60px;
+      }
+
+      > img {
+        margin: 0;
+        border: 0;
+        @include rounded-corners;
+        position: absolute;
+        left: 0;
+        top: 0;
+        min-height: 100%;
+        min-width: 100%;
+        z-index: -1;
+      }
+    }
+  }
+}
+

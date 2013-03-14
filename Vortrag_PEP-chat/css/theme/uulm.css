@@ -1,0 +1,54 @@
+/*
+Syntax error: File to import not found or unreadable: uulm-base.
+              Load paths:
+                /mnt/vault/home/sts/source/reveal.js
+                /mnt/vault/home/sts/source/reveal.js/css/theme/source
+        on line 33 of css/theme/source/uulm.scss
+
+28: $heading1TextShadow: 0 1px 1px rgba(0,0,0,0.1);
+29: $linkColor: #3b759e;
+30: $linkColorHover: lighten( $linkColor, 20% );
+31: $selectionBackgroundColor: #134674;
+32: 
+33: @import "uulm-base";
+
+Backtrace:
+css/theme/source/uulm.scss:33
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/import_node.rb:64:in `rescue in import'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/import_node.rb:42:in `import'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/import_node.rb:25:in `imported_file'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/perform.rb:149:in `rescue in visit_import'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/perform.rb:154:in `visit_import'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/base.rb:37:in `visit'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/base.rb:53:in `map'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/base.rb:37:in `visit'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/tree/root_node.rb:20:in `render'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/engine.rb:300:in `_render'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/engine.rb:247:in `render'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/plugin/compiler.rb:200:in `each'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/usr/lib64/ruby/gems/1.9.1/gems/sass-3.1.21/lib/sass/plugin/compiler.rb:298:in `block in watch'
+/usr/lib64/ruby/gems/1.9.1/gems/listen-0.5.2/lib/listen/multi_listener.rb:86:in `call'
+/usr/lib64/ruby/gems/1.9.1/gems/listen-0.5.2/lib/listen/multi_listener.rb:86:in `on_change'
+/usr/lib64/ruby/gems/1.9.1/gems/listen-0.5.2/lib/listen/multi_listener.rb:95:in `block in initialize_adapter'
+/usr/lib64/ruby/gems/1.9.1/gems/listen-0.5.2/lib/listen/adapter.rb:196:in `call'
+/usr/lib64/ruby/gems/1.9.1/gems/listen-0.5.2/lib/listen/adapter.rb:196:in `report_changes'
+/usr/lib64/ruby/gems/1.9.1/gems/listen-0.5.2/lib/listen/adapter.rb:208:in `poll_changed_dirs'
+/usr/lib64/ruby/gems/1.9.1/gems/listen-0.5.2/lib/listen/adapters/linux.rb:48:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: uulm-base.\A               Load paths:\A                 /mnt/vault/home/sts/source/reveal.js\A                 /mnt/vault/home/sts/source/reveal.js/css/theme/source\A         on line 33 of css/theme/source/uulm.scss\A \A 28: $heading1TextShadow: 0 1px 1px rgba(0,0,0,0.1);\A 29: $linkColor: #3b759e;\A 30: $linkColorHover: lighten( $linkColor, 20% );\A 31: $selectionBackgroundColor: #134674;\A 32: \A 33: @import \"uulm-base\";"; }

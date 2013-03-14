@@ -28,11 +28,13 @@ everyone.connected(function(){
 
 everyone.now.sendMessage = function(receiver, message){
 	var clientID = this.user.clientId;
+	var timestamp = new Date();
 	chat.getUserName(this.user.clientId, function(username){
 		chat.sendMessage(username, clientID, receiver, message,function(ret){
 			if(ret == 1){
 			console.log("User "+username+" sendet Nachricht an "+receiver);
-			sendMessageToUser(receiver, username, message);
+			//sendMessageToUser(receiver, username, message);
+			nowjs.getGroup(receiver).now.updateMessages();
 			}else{
 				console.log("User "+username+" konnte Nachricht nicht an "+receiver+" senden");
 			}
@@ -44,8 +46,12 @@ everyone.now.getUsers = function(){
 	chat.getUsers( this.now.receiveUsers);
 }
 
-function sendMessageToUser(username, author, message){
-	nowjs.getGroup(username).now.receiveMessage(author, message);
+function sendMessageToUser(username, message){
+	try{
+		nowjs.getGroup(username).now.receiveMessage(JSON.stringify(message));
+	}catch(e){
+		console.log("Fehler beim Senden von Nachricht an Benutzer "+username+": "+e);
+	}
 }
 
 everyone.now.getMessages = function(){
@@ -54,9 +60,13 @@ everyone.now.getMessages = function(){
 		if(username != null && username != undefined){
 		chat.checkUserLogin(username, clientID, function(ret){
 			if(ret == 1){
-				chat.getMessages(username, function(names, messages){
-					for(i=0; i<names.length && i<messages.length;i++){
-						sendMessageToUser(username, names[i], messages[i]);
+				//chat.getMessages(username, function(names, messages){
+				//	for(i=0; i<names.length && i<messages.length;i++){
+				//		sendMessageToUser(username, names[i], messages[i]);
+				//	}
+				chat.getMessages(username, function(messages){
+					for(i=0; i<messages.length;i++){
+						sendMessageToUser(username, messages[i]);
 					}
 				});
 			}else{
@@ -68,10 +78,12 @@ everyone.now.getMessages = function(){
 	});
 }
 
+//everyone.now.getQuestion = 
+
 everyone.now.userLogin = function(username, password){
 	var clientID = this.user.clientId;
 	var user = this;
-	chat.getUserPrivateKey(username, password, function(privKey){
+	chat.getUserPrivateKey(username, password, function(privKey, pubKey){
 		if(privKey != null){
 			chat.setUserOnlineStatus(username, true);
 			console.log("Loginversuch: Username: "+username+" Password: "+ password+" clientID: "+clientID);
@@ -80,7 +92,11 @@ everyone.now.userLogin = function(username, password){
 					//hier noch die this.user.clientId speichern (ersetzt den Cookie):
 					var group = nowjs.getGroup(username);
 					group.addUser(clientID);
-					user.now.loginSuccess(privKey, username, null);
+					var userdata = {};
+					userdata.private_key = privKey;
+					userdata.username = username;
+					userdata.public_key = pubKey;
+					user.now.loginSuccess(JSON.stringify(userdata), null);
 				}else{
 					user.now.loginSuccess(null, null,"Fehler beim Anlegen der Session!");
 				}

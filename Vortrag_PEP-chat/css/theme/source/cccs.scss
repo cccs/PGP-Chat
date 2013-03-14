@@ -1,0 +1,47 @@
+/**
+ * CCCS theme for reveal.js.
+ *
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+@import url('http://fonts.googleapis.com/css?family=Titillium+Web:200');
+
+$highlightColor: #5bc72b;
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Open Sans', sans-serif;
+$mainFontSize: 30px;
+$mainColor: #666666;
+$headingFont: 'Titillium Web', sans-serif;
+$headingColor: $highlightColor;
+$headingLineHeight: 36px;
+$headingLetterSpacing: -1px;
+$headingTextTransform: none;
+$headingTextShadow: 0 1px 1px rgba(0,0,0,0.1);
+$heading1TextShadow: 0 1px 1px rgba(0,0,0,0.1);
+$linkColor: #061e35;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: #134674;
+
+@import "uulm-base";
+
+.reveal .slides .darkbg {
+  color: white;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  a {
+    color: white;
+    background: rgba(255,255,255,0.2);
+  }
+  a:hover {
+    color: $linkColorHover;
+    background: rgba(255,255,255,0.7);
+  }
+}

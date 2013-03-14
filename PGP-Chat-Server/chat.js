@@ -23,6 +23,12 @@ function registerUser(username, pubKey, privKey, password, callback){
 	database.addUser(username, pubKey, privKey, password, callback);
 }
 
+/*
+function getUserQuestion(username, callback){
+	database.getUserQuestion(username,callback);
+}
+*/
+
 function getUserPrivateKey(name, password, callback){
 	verifyUserPW(name, password, function(ret){
 		if(ret == true){

@@ -1,0 +1,22 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'nodejs', '/usr/bin/npm', 'install', '-r', 'express' ]
+2 warn invalid config registry="express"
+3 warn invalid config Must be a full url with 'http://'
+4 info using npm@1.2.12
+5 info using node@v0.8.21
+6 verbose read json /home/andreas/package.json
+7 error install Couldn't read dependencies
+8 error Error: ENOENT, open '/home/andreas/package.json'
+9 error If you need help, you may report this log at:
+9 error     <http://github.com/isaacs/npm/issues>
+9 error or email it to:
+9 error     <npm-@googlegroups.com>
+10 error System Linux 2.6.32-042stab057.1
+11 error command "nodejs" "/usr/bin/npm" "install" "-r" "express"
+12 error cwd /home/andreas/PGP-Chat/PGP-Chat-Server
+13 error node -v v0.8.21
+14 error npm -v 1.2.12
+15 error path /home/andreas/package.json
+16 error code ENOENT
+17 error errno 34
+18 verbose exit [ 34, true ]

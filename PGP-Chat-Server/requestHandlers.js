@@ -32,6 +32,7 @@ response.end();
 		  });
 }
 
+/*
 function registerUser(request, response){
 	//hier den Request weiterleiten auf: chat.js registerUser(author, receiver, message); (am besten mit callback funktion!)
 	var postData = "";
@@ -60,6 +61,27 @@ function registerUser(request, response){
             }
         });
     });
+
+}
+*/
+
+function registerUser(request, response){
+
+        var username = request.body[constants.REGISTER_USER_FIELDNAME_USERNAME];
+        var privKey = request.body[constants.REGISTER_USER_FIELDNAME_PRIVATE_KEY];
+        var pubKey = request.body[constants.REGISTER_USER_FIELDNAME_PUBLIC_KEY];
+        var password = request.body[constants.REGISTER_USER_FIELDNAME_PASSWORD];
+        chat.registerUser(username, pubKey, privKey, password, function(res){
+            if(res){
+                response.writeHead(200, {'Content-Type':'text/html'});
+                response.write("<html><body>Erfolg! -> <a href='/'>hier gehts weiter!</a></body></html>");
+                response.end();
+            }else{
+                response.writeHead(200, {'Content-Type':'text/html'});
+                response.write("<html><body>Fehler</body></html>");
+                response.end();
+            }
+        });
 
 }
 

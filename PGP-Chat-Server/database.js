@@ -24,6 +24,20 @@ function addUser(name, public_key, private_key, password, callback){
 }
 
 /*
+function getUserQuestion(name, callback){
+    name = mysql_real_escape_string(name);
+    var query = "SELECT userQuestion FROM users WHERE name = '"+name+"'";
+    doSelectSingleRowQuery(query, function(res){
+        if(res == null){
+            callback(null);
+        }else{
+            callback(res.userQuestion);
+        }
+    });
+}
+*/
+
+/*
 Return werte:
 1, falls erfolg!
 0, falls Fehler!
@@ -59,6 +73,10 @@ function getUsernameFromEnabledSession(sessionID, callback){
     });
 }
 
+//function getPublicKeyFromUserId(userId, callback){
+//
+//}
+
 function getAllUsers(callback){
     var query = "SELECT name, public_key FROM users";
     doSelectQuery(query, function(err, results, fields) {
@@ -79,12 +97,12 @@ function getAllUsers(callback){
 
 function getUserPrivateKey(name, callback){
     name = mysql_real_escape_string(name);
-    var query = "SELECT private_key FROM users WHERE name = '"+name+"'";
+    var query = "SELECT private_key, public_key FROM users WHERE name = '"+name+"'";
     doSelectSingleRowQuery(query, function(res){
         if(res == null){
             callback(null);
         }else{
-            callback(res.private_key);
+            callback(res.private_key, res.public_key);
         }
     });
 }
@@ -165,7 +183,7 @@ function getMessages(receiver, callback){
     getUserNumber(receiver, function(res){
     receiver = res;
     receiver = parseInt(receiver);
-    var query = "SELECT Messages.Number, users.name as Author, Messages.message_body as Message_body FROM Messages, users WHERE Messages.receiver = "+receiver+" AND Messages.author = users.number ORDER BY Messages.Number ASC";
+    var query = "SELECT Messages.Number, users.name as Author, Messages.message_body as Message_body, Messages.Zeitpunkt as Zeitpunkt FROM Messages, users WHERE Messages.receiver = "+receiver+" AND Messages.author = users.number ORDER BY Messages.Number ASC";
     doSelectQuery(query, function(err, results, fields) {
         if(err != null || results.length < 1 || results[0] == undefined){
             console.log("Error in select_query: "+query+"\nError: " + err);
@@ -173,13 +191,20 @@ function getMessages(receiver, callback){
             var messages = new Array();
             callback(authors, messages); //leere Arrays zurückgeben
         }else{
-            var authors = new Array();
             var messages = new Array();
+            //var authors = new Array();
+            //var messages = new Array();
             for(i=0;i<results.length;i++){
-            authors.push(results[i].Author);
-            messages.push(results[i].Message_body);
+            var message = {};
+            message.text=results[i].Message_body;
+            message.author=results[i].Author;
+            message.time=results[i].Zeitpunkt;
+            messages.push(message);
+            //authors.push(results[i].Author);
+            //messages.push(results[i].Message_body);
             }
-            callback(authors, messages);
+            //callback(authors, messages);
+            callback(messages);
     }
     });
     });
@@ -265,3 +290,4 @@ exports.getMessages = getMessages;
 exports.getUsernameFromEnabledSession = getUsernameFromEnabledSession;
 exports.createSession = createSession;
 exports.deleteSession = deleteSession;
+//exports.getUserQuestion = getUserQuestion;

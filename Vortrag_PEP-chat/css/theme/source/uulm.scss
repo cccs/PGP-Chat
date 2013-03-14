@@ -1,0 +1,34 @@
+/**
+ * UUlm theme for reveal.js.
+ *
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+
+$highlightColor: #a32638;
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Open Sans', sans-serif;
+$mainFontSize: 30px;
+$mainColor: #666666;
+$headingFont: 'Open Sans', sans-serif;
+$headingColor: $highlightColor;
+$headingLineHeight: 36px;
+$headingLetterSpacing: -1px;
+$headingTextTransform: none;
+$headingTextShadow: 0 1px 1px rgba(0,0,0,0.1);
+$heading1TextShadow: 0 1px 1px rgba(0,0,0,0.1);
+$linkColor: #3b759e;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: #134674;
+
+@import "uulm-base";
+

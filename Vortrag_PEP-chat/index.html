@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="de">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>PEP-Chat</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/cccs.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+        <style type="text/css">
+            
+            
+        </style>
+        
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section>
+          <div class="title">
+            <img class="header" src="img/intro.jpg" />
+            <div class="belowheader">
+              <h1>PEP - Chat</h1>
+              <h3>Pretty Easy Privacy - Chat</h3>
+              <h4>von Andreas Stadelmeier / JanUlrich</h4>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="normal">
+          <h2>
+          Inhalt
+        </h2>
+        <ul>
+          <li>
+            Motivation
+          </li>
+          <li>
+            Praxisvorführung
+          </li>
+          <li>
+            Grundlagen
+          </li>
+          <li>
+            Funktionsweise
+          </li>
+          <li>
+            Fazit
+          <li>
+            Ähnliche Anwendungen
+          </li>
+        </ul>
+      </div>
+        </section>
+
+        <section>
+          <section>
+                        
+    <div class="normal">
+            <h2>Motivation</h2>
+            <p>
+              Betreiber analysieren/verkaufen private Nutzerdaten.
+              <br>
+              Beispiele:
+            </p>
+            <ul>
+                <li class="fragment">Personalisierte Werbung setzt das Auswerten von Nutzerdaten voraus
+                </li>
+                <li class="fragment">Google liest E-mails</li>
+                <li class="fragment">Facebook-Apps erhalten (nach Bestätigung) Zugriff auf Profildaten</li>
+                <!-- 
+                <li>Facebook: Verdient Geld mit Benutzerdaten, Facebook-Apps erhalten Zugriff auf Nutzerdaten, lockert/verkompliziert ständig die Privatspäre-Standardeinstellung (http://mattmckeon.com/facebook-privacy/)</li>
+                -->
+                <li class="fragment">WhatsApp benötigt Zugriff auf Handy-Kontakte</li>
+                <li class="fragment">Cloud-Anbieter außerhalb der EU unterliegen anderen Datenschutzrichtlinien</li>
+            </ul>
+          </div>
+        </section>
+                
+                <section>
+    <div class="normal">
+            <h2>Motivation</h2>
+            <p>Nutzer von Cloud-Diensten / Chat-Anwendungen / Sozialen Netzwerken können jederzeit ausspioniert werden</p>
+            <ul>
+            <li class="fragment">Staat/Polizei kann Daten einsehen<img src="img/ihearyou.jpg" width="35%" class="float-right" alt="http://www.flickr.com/photos/clintjcl/4086976457" /></li>
+              <li class="fragment">Kein System ist 100% sicher</li>
+            <li class="fragment"><strong>Problem:</strong><br>Können private Nutzerdaten vom Anbieter gelesen werden, dann besteht potenziell die Möglichkeit eines Diebstahls/Abgreifens der Daten durch Dritte.
+               </li>
+            <li class="fragment"><strong>Lösung:</strong><br>Ende-zu-Ende Verschlüsselung
+               </li>   
+            </ul>
+          
+          </div>
+        </section> 
+<section>
+                        
+    <div class="normal">
+            <h2>Motivation</h2>
+            <p>
+              Verschlüsselung ist unpraktikabel
+            </p>
+            <ul>
+            <li class="fragment">Benutzer will nichts installieren/einrichten</li>
+            <li class="fragment">net of trust -> Aufwändige Verfahren zur Verifizierung von "Trusted Usern"</li>
+            <li class="fragment">Ende-zu-Ende Verschlüsselung benötigt Software (auf beiden Seiten der Kommunikation)</li>
+
+            <li class="fragment"><i>"Wer kann mir eine verschlüsselte Nachricht senden?"</i></li>
+            </ul>
+          </div>
+        </section>
+        
+        </section>
+
+        <section>
+          <section>
+          <div class="fill">
+            <h2>Praktische Vorführung</h2>
+            <p>Server-Adresse: <a href="https://176.31.216.147:8080">https://176.31.216.147:8080</a><small>('https://' muss in die URL-Zeile des Browsers mit eingetippt werden)</small></p>
+            <p>Testbenutzer:
+              <ul>
+                <li>Alice:
+                <ul><li>Benutzername: Alice</li><li>Passwort: alice</li></ul>
+              </li>
+                <li>Bob:
+                <ul><li>Benutzername: Bob</li><li>Passwort: bob</li></ul>
+              </li>
+              </ul>
+          </div>
+        </section>
+          <section>
+          <div class="normal">
+            <h2>Praktische Vorführung</h2>
+            <img width="100%" src="img/Chat-Verlauf.png" alt="" />
+          </div>
+        </section>
+        <section>
+          <div class="normal">
+            <h2>Praktische Vorführung</h2>
+            <img width="100%" src="img/Datenbank-Messages.png" alt="" />
+          </div>
+        </section>
+        <section>
+          <div class="normal">
+            <h2>Praktische Vorführung</h2>
+            <img width="100%" src="img/Datenbank-Users.png" alt="" />
+          </div>
+        </section>
+        </section>
+
+            <section>
+              <section>
+          <div class="normal">
+            <h2>Grundlagen</h2>
+            <img width="100%" src="img/SymmetrischeVerschluesselung.png" alt="Symmetrische Verschlüsselung" />
+          </div>
+        </section>
+
+        <section>
+          <div class="normal">
+            <h2>Grundlagen</h2>
+            <img width="100%" src="img/AsymmetrischeVerschluesselung.png" alt="Asymmetrische Verschlüsselung" />
+          </div>
+        </section>
+            </section>
+
+            <section>
+            <section>
+              <div class="normal">
+                <h2>Funktionsweise</h2>
+                <h3>Schlüssel generieren</h3>
+                <ol>
+                  <li>Bei der Registrierung des Benutzerkontos wird ein RSA-Schlüsselpaar auf Clientseite generiert</li>
+                  <li>Privater Schlüsselanteil wird mit Benutzerpasswort verschlüsselt</li>
+                  <li>Benutzername, Passwort und Schlüssel werden anschließend auf den Server übertragen und von diesem gespeichert</li>
+                </ol>
+              </div>
+            </section>
+            <section>
+              <div class="normal">
+                <h2>Funktionsweise</h2>
+                <h3>Nachricht versenden</h3>
+                <img src="img/nachrichtSenden.png"/>
+              </div>
+            </section>
+            <section>
+              <div class="normal">
+                <h2>Funktionsweise</h2>
+                <h3>Nachricht empfangen</h3>
+                <img src="img/nachrichtEmpfangen.png"/>
+              </div>
+            </section>
+            </section>
+
+            <section>
+              <section>
+                <div class="normal">
+                  <h2>PEP Chat - Fazit</h2>
+                    <h3>Vorteile</h3>
+                      <ul>
+                        <li class="fragment">Server dient als Zertifizierungsstelle <img class="float-right" src="img/pgp.png" alt="https://xkcd.com/1181/"/><br>-> Klarnamen statt Fingerprints</li>
+                        <li class="fragment">Daten bleiben auf dem Server gespeichert und sind nur mit dem zugehörigen Benutzerpasswort zugänglich</li>
+                        <li class="fragment">Weniger Fachkenntnisse erforderlich ;)</li>
+                        <li class="fragment">Anwendung ist "Open Source"</li>
+                      </ul>
+                </div>
+              </section>
+              <section>
+                <div class="normal">
+                  <h2>PEP Chat - Fazit</h2>
+                    <h3>Nachteile des PEP-Chats</h3>
+                      <ul>
+                        <li class="fragment">Mehr Rechenaufwand auf Klientseite
+                          <ul>
+                          <li>Schlüsselgenerierung sehr Rechenaufwendig
+                          </li>
+                          <li>Javascriptausführung vergleichsweise langsam
+                          </li>
+                          <li>Server kann Nachrichten nicht lesen.
+                            Filtern von Nachrichten (auf Spam/Schimpfworte) musss
+                            auf Klientseite statt finden
+                          </li>
+                          </ul>
+                        </li>
+                        <li class="fragment">"Verschlüsselung im Browser ist unsicher"</li>
+                        <li class="fragment">Dem Dienstanbieter/Serverbetreiber muss vertraut werden</li>
+                      </ul>
+                </div>
+              </section>
+              <section>
+                <div class="normal">
+                  <h2>PEP Chat - Fazit</h2>
+                    <h3>Ausblick / Verbesserungsmöglichkeiten</h3>
+                      <ul>
+                        <li class="fragment">Authentifizierung mittels Keysigning</li>
+                        <li class="fragment">Kalender basierend auf vorhandener Verschlüsselung
+                        </li>
+                        <li class="fragment">Performanceverbesserungen (Bsp.: Hybride-Verschlüsselung)</li>
+                        <li class="fragment">Gruppenchat</li>
+                        <li class="fragment">Schnittstellen zu anderen Chat-Klients (z.B. XMPP, OTR-Verschlüsselung)</li>
+                      </ul>
+                </div>
+              </section>
+            </section>
+
+            <section>
+                  <div class="normal">
+                  <h2>Andere Anwendungen</h2>
+                  <h3> - zur verschlüsselten Kommunikation</h3>
+                  <br>
+                  <ul>
+                    <li>
+                      <a class="roll" href="https://scrambls.com/">Scrambls</a>
+                    </li>
+                    <li>
+                      <a class="roll" href="https://www.pidgin.im/">Pidgin</a> + <a class="roll" href="https://scrambls.com/">OTR-Plugin</a>
+                    </li>
+                    <li>
+                      <a class="roll" href="https://mega.co.nz/">MEGA</a>
+                    </li>
+                  </ul>
+                  </div>
+                </section>
+
+                <section>
+                    <div class="fill">
+                    <img src="img/thankyou.png" />
+                    </div>
+                    <aside class="notes">Credits go to reveal.js: https://github.com/Skyr/reveal.js</aside>
+                </section>  
+
+
+<!-- ----------------------------------------------------------------------------
+-- -->
+                
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>

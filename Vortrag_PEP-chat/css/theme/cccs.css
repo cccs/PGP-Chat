@@ -1,0 +1,301 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+@import url('http://fonts.googleapis.com/css?family=Titillium+Web:200');
+/**
+ * CCCS theme for reveal.js.
+ *
+ */
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+body {
+  background: #bebebe;
+  background: -moz-radial-gradient(center, circle cover, #f0f0f0 0%, #bebebe 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #f0f0f0), color-stop(100%, #bebebe));
+  background: -webkit-radial-gradient(center, circle cover, #f0f0f0 0%, #bebebe 100%);
+  background: -o-radial-gradient(center, circle cover, #f0f0f0 0%, #bebebe 100%);
+  background: -ms-radial-gradient(center, circle cover, #f0f0f0 0%, #bebebe 100%);
+  background: radial-gradient(center, circle cover, #f0f0f0 0%, #bebebe 100%);
+  background-color: #2b2b2b;
+}
+
+.reveal {
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: #666666;
+}
+
+::selection {
+  color: white;
+  background: #134674;
+  text-shadow: none;
+}
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 20px 0;
+  color: #5bc72b;
+  font-family: "Titillium Web", sans-serif;
+  line-height: 36px;
+  letter-spacing: -1px;
+  text-transform: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.reveal h1 {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a:not(.image) {
+  color: #061e35;
+  text-decoration: none;
+  -webkit-transition: color .15s ease;
+  -moz-transition: color .15s ease;
+  -ms-transition: color .15s ease;
+  -o-transition: color .15s ease;
+  transition: color .15s ease;
+}
+
+.reveal a:not(.image):hover {
+  color: #105291;
+  text-shadow: none;
+  border: none;
+}
+
+.reveal .roll span:after {
+  color: #fff;
+  background: black;
+}
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  margin: 15px 0px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 4px solid #666666;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+.reveal a:hover img {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #061e35;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {
+  border-right-color: #061e35;
+}
+
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {
+  border-left-color: #061e35;
+}
+
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #061e35;
+}
+
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  border-top-color: #061e35;
+}
+
+.reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #105291;
+}
+
+.reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #105291;
+}
+
+.reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #105291;
+}
+
+.reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #105291;
+}
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.reveal .progress span {
+  background: #061e35;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+.reveal {
+  letter-spacing: -1px;
+  line-height: 36px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.reveal .slides section {
+  height: 675px;
+  width: 900px;
+}
+.reveal section img {
+  border: 0;
+  box-shadow: none;
+}
+.reveal .frame {
+  border: 2px solid #666666;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.reveal .float-right {
+  float: right;
+}
+.reveal .float-left {
+  float: left;
+}
+.reveal h1 {
+  font-size: 60px;
+  line-height: 60px;
+  padding: 0;
+  margin: 0;
+  margin-top: 200px;
+  padding-right: 40px;
+  font-weight: 600;
+  letter-spacing: -3px;
+}
+.reveal h2 {
+  font-size: 45px;
+  line-height: 45px;
+  padding: 0;
+  margin: 0;
+  padding-right: 40px;
+  padding-bottom: 30px;
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+.reveal h3 {
+  font-size: 30px;
+  line-height: 36px;
+  padding: 0;
+  margin: 0;
+  padding-right: 40px;
+  padding-bottom: 15px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+.reveal p {
+  margin: 0 0 20px 0;
+}
+.reveal li {
+  padding: 0;
+  margin: 0 0 0.4em;
+}
+.reveal ul li {
+  list-style: none outside none;
+}
+.reveal ul li:before {
+  color: #5bc72b;
+  content: "·";
+  margin-left: -0.75em;
+  width: 0.75em;
+  margin-right: 0.5em;
+}
+.reveal .slides {
+  text-align: left;
+}
+.reveal .slides section:not(.stack).present {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+.reveal .slides div.normal {
+  padding: 20px 60px 32px;
+}
+.reveal .slides div.title {
+  padding: 20px 60px;
+}
+.reveal .slides div.title > img.header {
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: 50%;
+  width: 100%;
+  min-height: 50%;
+  min-width: 100%;
+  margin: 0;
+  z-index: -1;
+}
+.reveal .slides div.title .belowheader {
+  position: absolute;
+  top: 70%;
+  padding-top: 1ex;
+}
+.reveal .slides div.title .belowheader h1 {
+  margin: 0;
+}
+.reveal .slides div.fill {
+  padding: 20px 60px 32px;
+}
+.reveal .slides div.fill h2 {
+  background: rgba(255, 255, 255, 0.75);
+  padding-top: .2em;
+  padding-bottom: .3em;
+  margin-top: .3em;
+  margin-bottom: .3em;
+  margin-left: -60px;
+  padding-left: 60px;
+  margin-right: -60px;
+  padding-right: 60px;
+}
+.reveal .slides div.fill > img {
+  margin: 0;
+  border: 0;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-height: 100%;
+  min-width: 100%;
+  z-index: -1;
+}
+
+.reveal .slides .darkbg {
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+.reveal .slides .darkbg a {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+}
+.reveal .slides .darkbg a:hover {
+  color: #105291;
+  background: rgba(255, 255, 255, 0.7);
+}
